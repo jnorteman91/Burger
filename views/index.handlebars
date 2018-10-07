@@ -1,0 +1,19 @@
+<div class="row">
+    <section class="col-xs-4">
+        <ul class="list-group">
+            {{!-- Run through burgers --}}
+            {{#each burgers}}
+            {{!-- unless it has already been devoured--}}
+                {{#unless this.devoured}}
+                    <li class="list-group-item">
+                        {{!--Display burger name --}}
+                        {{this.burger.name}}
+                        <button type="submit" form="{{this.id}}" class="btn btn-danger btn-block">Devour!</button>
+                    </li>
+                    {{!-- this.id renders the burger's ID--}}
+                    <form  action="/{{this.id}}?_method=PUT" method="POST" id="{{this.id}}" class="hidden-xs-up"></form>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </section>
+</div>
